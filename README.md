@@ -1,5 +1,5 @@
 
-# 🧠 Fine-Tuning e Geração de Embeddings com LLMs Locais
+# Fine-Tuning e Criação de Bot com LLMs Locais
 
 Este projeto tem como objetivo realizar fine-tuning em modelos LLM pequenos (como LLaMA3.2 1B e Phi-3-mini).
 
@@ -7,16 +7,16 @@ Este projeto tem como objetivo realizar fine-tuning em modelos LLM pequenos (com
 
 ## ⚠️ Dificuldades Enfrentadas
 
-### ❌ 1. Limitações de Hardware Local
+###  1. Limitações de Hardware Local
 
 - GPU **NVIDIA MX110** - A placa instalada em um notebook não é compatível com Unsloth para treinamento e não é suficiente para outras formas de fine tuning.
 - Memória VRAM insuficiente para modelos quantizados, causando `ValueError` ao carregar com `transformers`.
 
-### ❌ 2. Problemas com Instalação de Modelos
+###  2. Problemas com Instalação de Modelos
 
 - Bloqueio de acesso via **Zscaler** impediu o download de modelos via `ollama`.
 
-### ❌ 3. Tempo de Execução no Colab
+###  3. Tempo de Execução no Colab
 
 - Ambientes gratuitos como **Google Colab** desconectam por inatividade ou limite de tempo, interrompendo o treinamento.
 - Uso de modelos como `LLaMA3.2-1B`, `Mistral` e outros testados, mostrou-se inviável devido ao tempo de carregamento e treinamento, mesmo usando a plataforma Google Colab.
@@ -25,26 +25,26 @@ Este projeto tem como objetivo realizar fine-tuning em modelos LLM pequenos (com
 
 ## ✅ Soluções Aplicadas
 
-### ✅ Uso do modelo `Gwen-3-1B`
+###  Uso do modelo `Gwen-3-1B`
 
 - **Mais leve**, rodou razoavelmente bem no Colab T4 (free tier).
 - Permitiu fine-tuning com batches pequenos (~500 exemplos) sem erros.
 
-### ✅ Ajustes no Código
+###  Ajustes no Código
 
 - **Redução do tamanho do dataset** para 500 linhas.
 - **Divisão por batches** e redução no número de `steps` e `epochs`.
 
-### ✅ Streamlit + Qwen3
+###  Streamlit + Qwen3
 
 - Após o treinamento, o modelo pode ser carregado localmente via **Qwen3** com `ollama`.
 - Interface amigável com **Streamlit** para testar perguntas/respostas usando documentos vetorizados (RAG).
 
 ---
 
-## 🧪 Instruções de Uso
+##  Instruções de Uso
 
-### 🔧 Requisitos
+###  Requisitos
 
 - Python 3.10+
 - CUDA (caso vá usar GPU no Colab Pro+)
@@ -62,7 +62,7 @@ Este projeto tem como objetivo realizar fine-tuning em modelos LLM pequenos (com
 pip install torch transformers trl unsloth streamlit langchain sentence-transformers faiss-cpu
 ```
 
-### ▶️ Execução Local (com modelo treinado)
+###  Execução Local (com modelo treinado)
 
 ```bash
 streamlit run app.py
