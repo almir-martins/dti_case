@@ -1,0 +1,3 @@
+FROM ./qwen3-math.gguf
+
+TEMPLATE chat_template.jinja
